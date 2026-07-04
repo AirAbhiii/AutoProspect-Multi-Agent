@@ -112,33 +112,36 @@ def create_research_agent() -> Agent:
 
 def extract_json_or_raise(text: str) -> Dict[str, Any]:
     """Extract JSON from a model response. Handles common small-model errors and trailing text."""
+    text = text.strip()
+    
+    # 1. Try standard JSON loading first
     try:
-        # 1. Try standard JSON loading
         return json.loads(text)
-    except Exception:
-        try:
-            # 2. Try to isolate the FIRST JSON block
-            start = text.find("{")
-            if start == -1:
-                raise ValueError("No opening brace found")
-                
-            # We need to find the matching closing brace for the FIRST block
-            bracket_count = 0
-            for i in range(start, len(text)):
-                if text[i] == '{':
-                    bracket_count += 1
-                elif text[i] == '}':
-                    bracket_count -= 1
-                    if bracket_count == 0:
-                        candidate = text[start : i + 1]
-                        # Fix common small-model error: using single quotes instead of double quotes
-                        if "'" in candidate and '"' not in candidate:
-                            candidate = candidate.replace("'", '"')
-                        return json.loads(candidate)
+    except json.JSONDecodeError:
+        pass
+
+    # 2. Try to isolate the FIRST JSON block if standard loading failed
+    try:
+        start = text.find("{")
+        if start == -1:
+            raise ValueError("No opening brace found")
             
-            raise ValueError("No matching closing brace found")
-        except Exception as e:
-            raise ValueError(f"Failed to parse JSON. Response was: {text}") from e
+        bracket_count = 0
+        for i in range(start, len(text)):
+            if text[i] == '{':
+                bracket_count += 1
+            elif text[i] == '}':
+                bracket_count -= 1
+                if bracket_count == 0:
+                    candidate = text[start : i + 1]
+                    # Fix common small-model error: using single quotes instead of double quotes
+                    if "'" in candidate and '"' not in candidate:
+                        candidate = candidate.replace("'", '"')
+                    return json.loads(candidate)
+        
+        raise ValueError("No matching closing brace found")
+    except Exception as e:
+        raise ValueError(f"Failed to parse JSON. Response was: {text}") from e
 
 
 import requests
