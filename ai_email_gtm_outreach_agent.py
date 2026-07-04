@@ -8,7 +8,6 @@ from agno.agent import Agent
 from agno.run.agent import RunOutput
 from agno.db.sqlite import SqliteDb
 from agno.models.groq import Groq
-from agno.tools.serper import SerperTools
 
 
 def require_env(var_name: str) -> None:
@@ -255,9 +254,10 @@ def main() -> None:
     # Inputs
     st.title("AutoProspect Multi-Agent")
     st.info(
-        "GTM teams often need to reach out for demos and discovery calls, but manual research and personalization is slow. "
-        "This app uses Groq (Llama 3) with a multi-agent workflow to find target companies, identify contacts, research genuine insights (website + Reddit), "
-        "and generate tailored outreach emails in your chosen style."
+        "Professionals often struggle with the slow pace of manual research and outreach personalization. "
+        "AutoProspect automates this using Groq (Llama 3) and Serper, powered by a multi-agent workflow. "
+        "It autonomously identifies potential partners, finds relevant contacts, uncovers genuine research insights from company websites and Reddit, "
+        "and generates tailored outreach emails in your chosen style."
     )
     col1, col2 = st.columns(2)
     with col1:
