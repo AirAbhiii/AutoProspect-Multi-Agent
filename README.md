@@ -73,8 +73,9 @@ The following screenshots demonstrate the AutoProspect Multi-Agent in action, fr
 
 ### Input Configuration
 ![Input Configuration](assets/screenshots/Screenshot%20(10487).png)
-
-assets/screenshots/Screenshot%20(10489).png
+- - **Framework:** Streamlit, Agno (formerly Phidata)
+- - - **LLM Provider:** Groq (Llama 3.1 8b-instant)
+- - **Search API:** Serper.dev
 ### Generated Results
 The application successfully identifies target companies, discovers key contacts, performs deep research on their current initiatives, and drafts highly tailored emails:
 
