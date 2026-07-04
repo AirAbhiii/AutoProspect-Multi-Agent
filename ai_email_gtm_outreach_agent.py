@@ -377,7 +377,10 @@ def main() -> None:
             for r in research:
                 st.markdown(f"**{r.get('name','')}**")
                 for insight in r.get("insights", [])[:4]:
-                    st.write(f"- {insight}")
+                    if isinstance(insight, dict):
+                        st.write(f"- {insight.get('text', insight)}")
+                    else:
+                        st.write(f"- {insight}")
         else:
             st.info("No research insights")
         st.divider()
