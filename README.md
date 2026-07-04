@@ -67,14 +67,18 @@ AutoProspect Multi-Agent utilizes a sequential, multi-agent pipeline where each 
 
 5. Click "Start Outreach" to begin the automated pipeline.
 
-## Configuration
+## Application Showcase
 
-This application requires the following environment variables (or can be provided via the sidebar):
-- `GROQ_API_KEY`
-- `SERPER_API_KEY`
+The following screenshots demonstrate the AutoProspect Multi-Agent in action, from input configuration to the generation of highly personalized B2B outreach emails:
 
-## Built With
+### Input Configuration
+![Input Configuration](assets/screenshots/Screenshot%20(10489).png)
 
-- **Framework:** Streamlit, Agno (formerly Phidata)
-- **LLM Provider:** Groq (Llama 3.1 8b-instant)
-- **Search API:** Serper.dev
+### Generated Results
+The application successfully identifies target companies, discovers key contacts, performs deep research on their current initiatives, and drafts highly tailored emails:
+
+![Top Target Companies](assets/screenshots/Screenshot%20(10482).png)
+![Contacts Found](assets/screenshots/Screenshot%20(10487).png)
+![Research Insights](assets/screenshots/Screenshot%20(10491).png)
+![Outreach Emails](assets/screenshots/Screenshot%20(10493).png)
+
