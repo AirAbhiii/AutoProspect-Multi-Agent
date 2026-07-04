@@ -9,6 +9,26 @@ AutoProspect Multi-Agent is an automated prospecting and outreach tool that leve
 - **Intelligent Personalization:** Gathers insights from company websites and Reddit to write highly relevant outreach emails.
 - **Multi-Agent Workflow:** Orchestrates specialized agents for company finding, contact discovery, research, and email composition.
 
+## Agent Architecture and Workflow
+
+AutoProspect Multi-Agent utilizes a sequential, multi-agent pipeline where each agent relies on the output of its predecessor. This modular design allows for specialized processing at each stage of the lead generation and outreach process.
+
+### Workflow
+
+1. **Company Finder Agent:** Initiates the pipeline by searching for target companies based on user criteria.
+2. **Contact Finder Agent:** Processes the list of companies to identify key decision-makers and their contact details.
+3. **Research Agent:** Conducts deep research on the identified companies to gather specific insights for personalization.
+4. **Email Writer Agent:** Synthesizes the contact information and research insights to craft tailored outreach emails.
+
+### Agent Summary
+
+| Agent Name | Responsibility | Key Task |
+| :--- | :--- | :--- |
+| **Company Finder** | Lead Generation | Search for companies matching targeting criteria. |
+| **Contact Finder** | Prospecting | Identify decision-makers and infer email patterns. |
+| **Research Agent** | Personalization | Gather insights from websites and Reddit. |
+| **Email Writer** | Outreach | Generate personalized email content. |
+
 ## Prerequisites
 
 - Python 3.10+
