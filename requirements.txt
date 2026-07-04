@@ -1,5 +1,4 @@
 streamlit
 agno
 requests
-serper-python
 google-generativeai
