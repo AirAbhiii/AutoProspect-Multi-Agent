@@ -1,62 +1,60 @@
-### AI Email GTM Outreach Agent
+# AutoProspect Multi-Agent
 
-### 🎓 FREE Step-by-Step Tutorial 
-**👉 [Click here to follow our complete step-by-step tutorial](https://www.theunwindai.com/p/build-an-ai-email-gtm-outreach-agent-team) and learn how to build this from scratch with detailed code walkthroughs, explanations, and best practices.**
-
-An end-to-end, multi-agent Streamlit app that automates B2B outreach using GPT-5 and Exa. It discovers relevant companies, finds the right contacts (Founder's Office, GTM/Sales leadership, Partnerships/BD, Product Marketing), researches website + Reddit insights, and drafts tailored emails in your selected style.
+AutoProspect Multi-Agent is an automated prospecting and outreach tool that leverages Groq (Llama 3) and Serper API to streamline B2B outreach. It autonomously identifies potential target companies, finds relevant decision-makers, uncovers genuine research insights from company websites and Reddit, and generates tailored outreach emails.
 
 ## Features
 
-- **Multi-agent workflow**:
-  - **Company Finder**: Uses Exa to discover companies matching your targeting and offering.
-  - **Contact Finder**: Finds 2–3 relevant decision makers per company and emails (marks inferred emails clearly if needed).
-  - **Researcher**: Pulls 2–4 interesting insights per company from their website and Reddit to enable genuine personalization.
-  - **Email Writer**: Uses GPT-5 to produce concise, structured outreach emails.
+- **Automated Research:** Finds and evaluates target companies based on user-defined criteria.
+- **Contact Identification:** Automatically identifies high-value decision-makers and generates inferred email addresses.
+- **Intelligent Personalization:** Gathers insights from company websites and Reddit to write highly relevant outreach emails.
+- **Multi-Agent Workflow:** Orchestrates specialized agents for company finding, contact discovery, research, and email composition.
 
-- **Operator controls**:
-  - **Number of companies** to target (1–10)
-  - **Email style**: Professional, Casual, Cold, or Consultative
-  - Live stage-by-stage progress UI and results with clean section dividers
+## Prerequisites
 
-- **Security-first**:
-  - API keys entered in the Streamlit sidebar; not hardcoded or committed
+- Python 3.10+
+- Groq API Key (https://console.groq.com/)
+- Serper API Key (https://serper.dev/)
 
-## Requirements
+## Installation
 
-Install dependencies from `requirements.txt`:
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd <repository-folder>
+   ```
 
-```bash
-pip install -r advanced_ai_agents/multi_agent_apps/ai_email_gtm_outreach_agent/requirements.txt
-```
-
-Required environment variables (set via sidebar or your shell):
-
-- `OPENAI_API_KEY`
-- `EXA_API_KEY`
-
-## How to Run
-
-```bash
-streamlit run advanced_ai_agents/multi_agent_apps/ai_email_gtm_outreach_agent/ai_email_gtm_outreach_agent.py
-```
+2. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Usage
 
-1. Enter your `OPENAI_API_KEY` and `EXA_API_KEY` in the left sidebar.
-2. Provide targeting description and offering.
-3. Choose number of companies and an email style.
-4. Click “Start Outreach”. Watch the stages: Companies → Contacts → Research → Emails.
-5. Review companies, contacts, research insights, and download or copy suggested emails.
+1. Run the Streamlit application:
+   ```bash
+   streamlit run ai_email_gtm_outreach_agent.py
+   ```
 
-## Notes
+2. Open the provided local URL in your browser.
 
-- The app uses the `gpt-5` model via OpenAI. If unavailable in your account, switch the model in `ai_email_gtm_outreach_agent.py` to one you have access to.
-- Exa is used for web discovery; ensure your `EXA_API_KEY` is valid.
+3. Enter your Groq API Key and Serper API Key in the sidebar.
 
-## Troubleshooting
+4. Fill in the required fields:
+   - Target companies (industry, size, region, etc.)
+   - Your product/service offering
+   - Your name and company
+   - Number of companies to prospect
 
-- If the app stalls on a stage, verify your API keys and network connectivity.
-- If JSON parsing errors occur, rerun the stage; models occasionally add extra text around JSON.
-- For rate limits, reduce number of companies.
+5. Click "Start Outreach" to begin the automated pipeline.
 
+## Configuration
 
+This application requires the following environment variables (or can be provided via the sidebar):
+- `GROQ_API_KEY`
+- `SERPER_API_KEY`
+
+## Built With
+
+- **Framework:** Streamlit, Agno (formerly Phidata)
+- **LLM Provider:** Groq (Llama 3.1 8b-instant)
+- **Search API:** Serper.dev
