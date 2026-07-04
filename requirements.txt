@@ -3,3 +3,6 @@ agno
 requests
 google-generativeai
 sqlalchemy
+groq
+pydantic
+pydantic-settings
