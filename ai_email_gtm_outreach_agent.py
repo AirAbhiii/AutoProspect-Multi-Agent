@@ -195,7 +195,7 @@ def run_research(agent: Agent, companies: List[Dict[str, str]]) -> List[Dict[str
     prompt = (
         "For each company, gather 2-4 interesting insights from their website and Reddit that would help personalize outreach.\n"
         f"Companies JSON: {json.dumps(companies, ensure_ascii=False)}\n"
-        "Return JSON: {'companies': [{'name': '...', 'insights': ['...', '...']}]}",
+        "Return JSON: {'companies': [{'name': '...', 'insights': ['...', '...']}]}"
     )
     resp: RunOutput = agent.run(prompt)
     data = extract_json_or_raise(str(resp.content))
@@ -386,6 +386,7 @@ def main() -> None:
         if emails:
             for i, e in enumerate(emails, 1):
                 with st.expander(f"{i}. {e.get('company','')} → {e.get('contact','')}"):
+                    st.write(f"**Subject:** {e.get('subject','')}")
                     st.text(e.get("body", ""))
         else:
             st.info("No emails generated")
