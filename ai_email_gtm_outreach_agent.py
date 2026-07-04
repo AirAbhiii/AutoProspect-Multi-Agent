@@ -17,8 +17,6 @@ def require_env(var_name: str) -> None:
 
 
 def create_company_finder_agent() -> Agent:
-    serper_tools = SerperTools()
-    db = SqliteDb(db_file="tmp/gtm_outreach.db")
     return Agent(
         model=Groq(id="llama-3.1-8b-instant"),
         tools=[],
