@@ -36,8 +36,6 @@ def create_company_finder_agent() -> Agent:
 
 
 def create_contact_finder_agent() -> Agent:
-    serper_tools = SerperTools()
-    db = SqliteDb(db_file="tmp/gtm_outreach.db")
     return Agent(
         model=Groq(id="llama-3.1-8b-instant"),
         tools=[],
@@ -91,10 +89,8 @@ def create_email_writer_agent(style_key: str = "Professional") -> Agent:
         ],
     )
 
-
 def create_research_agent() -> Agent:
     """Agent to gather interesting insights from company websites and Reddit."""
-    serper_tools = SerperTools()
     db = SqliteDb(db_file="tmp/gtm_outreach.db")
     return Agent(
         model=Groq(id="llama-3.1-8b-instant"),
