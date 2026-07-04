@@ -1,0 +1,5 @@
+google-generativeai
+serper-python
+streamlit
+agno
+requests
