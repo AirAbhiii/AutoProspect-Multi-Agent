@@ -103,9 +103,9 @@ def create_research_agent() -> Agent:
         instructions=[
             "You are ResearchAgent. For each company, you MUST find 2-4 valuable insights.",
             "Search targets: 1) Official website (About, Blog, Product), 2) Recent News/Press Releases, 3) Reddit or industry forums.",
-            "Avoid generic statements like 'They provide great service'. Look for: recent funding, new product launches, specific target markets, or unique value props.",
-            "MANDATE: Do not return an empty list. If no specific news is found, analyze their website and summarize their primary business goal.",
-            "Return ONLY valid JSON with key 'companies' as a list; each has: name, insights: [strings].",
+            "Avoid generic statements. Look for: recent funding, new product launches, specific target markets, or unique value props.",
+            "MANDATE: Return ONLY a valid JSON object. Do NOT include any preambles, post-scripts, notes, or conversational text.",
+            "Return JSON: {'companies': [{'name': '...', 'insights': ['...', '...']}]}",
         ],
     )
 
@@ -195,7 +195,7 @@ def run_research(agent: Agent, companies: List[Dict[str, str]]) -> List[Dict[str
     prompt = (
         "For each company, gather 2-4 interesting insights from their website and Reddit that would help personalize outreach.\n"
         f"Companies JSON: {json.dumps(companies, ensure_ascii=False)}\n"
-        "Return JSON: {companies: [{name, insights: [string, ...]}]}"
+        "Return JSON: {'companies': [{'name': '...', 'insights': ['...', '...']}]}",
     )
     resp: RunOutput = agent.run(prompt)
     data = extract_json_or_raise(str(resp.content))
@@ -386,7 +386,6 @@ def main() -> None:
         if emails:
             for i, e in enumerate(emails, 1):
                 with st.expander(f"{i}. {e.get('company','')} → {e.get('contact','')}"):
-                    st.write(f"Subject: {e.get('subject','')}")
                     st.text(e.get("body", ""))
         else:
             st.info("No emails generated")
